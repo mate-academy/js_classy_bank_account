@@ -5,11 +5,11 @@
   "main": "src/sum.js",
   "scripts": {
     "test": "jest",
-    "lint": "eslint **/*.js --fix",
+    "lint": "eslint **/*.js",
     "precommit": "lint-staged",
     "postcommit": "git update-index --again"
   },
-  "author": "Mate Academy",
+  "author": "Mate academy",
   "license": "MIT",
   "devDependencies": {
     "eslint": "^5.16.0",
@@ -26,7 +26,7 @@
   "lint-staged": {
     "linters": {
       "*.js": [
-        "eslint --fix",
+        "eslint",
         "git add"
       ]
     }

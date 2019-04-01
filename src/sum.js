@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Realise sum function:
+ * Implement sum function:
  * Function gets 2 numbers and return it's sum
  *
  * @param {number} a
