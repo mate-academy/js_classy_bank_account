@@ -8,6 +8,10 @@
  * @param {number} b
  *
  * @return {number}
+ *
+ * sum(1, 2) === 3
+ * sum(1, 11) === 12
+ *
  */
 
 function sum(a, b) {
