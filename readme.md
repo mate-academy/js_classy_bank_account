@@ -1,4 +1,4 @@
-#Boilerplate for JS tasks
+# Boilerplate for JS tasks
 
 - Includes `eslint`
 - Includes `pre-commit` hooks (eslint)
@@ -6,6 +6,6 @@
 
 Add `<name>.test.js` for each `<name>.js` and protect `master` branch.
 
-##Scripts
+## Scripts
 - `test` - run tests specified in `<name>.test.js`
 - `lint` - run eslint with `--fix` option
