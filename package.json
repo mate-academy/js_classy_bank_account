@@ -5,10 +5,7 @@
   "main": "src/sum.js",
   "scripts": {
     "test": "jest",
-    "lint": "eslint **/*.js",
-    "precommit": "lint-staged",
-    "postcommit": "git update-index --again",
-    "prepush": "npm run test"
+    "lint": "eslint **/*.js"
   },
   "author": "Mate academy",
   "license": "MIT",
@@ -30,6 +27,13 @@
         "eslint",
         "git add"
       ]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "post-commit": "git update-index --again",
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test"
     }
   }
 }
