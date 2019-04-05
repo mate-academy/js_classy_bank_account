@@ -2,18 +2,17 @@
 
 /**
  * Implement sum function:
- * Function gets 2 numbers and return it's sum
+ *
+ * Function takes 2 numbers and returns it's sum
+ *
+ * sum(1, 2) === 3
+ * sum(1, 11) === 12
  *
  * @param {number} a
  * @param {number} b
  *
  * @return {number}
- *
- * sum(1, 2) === 3
- * sum(1, 11) === 12
- *
  */
-
 function sum(a, b) {
   // write code here
   return a + b;
