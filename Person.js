@@ -28,4 +28,3 @@ Person.prototype = {
 }
 
 module.exports = Person;
-
