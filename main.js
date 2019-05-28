@@ -18,7 +18,7 @@ class PersonalInfo {
     ageDate.setHours(24, 0, 0, 0);
     const age = Math.abs(ageDate.getUTCFullYear() - 1970);
     console.log(`Name: ${this.name}, Age: ${age}, Amount: ${this
-      .deposite}`);
+      .deposite}$`);
   }
 
   addMoney(putMoney, transactionInfo) {
