@@ -1,0 +1,38 @@
+.container {
+  font-size: 20px;
+  text-align: center;
+}
+
+input{
+  margin: 10px;
+  height: 30px;
+  border-radius: 10px;
+}
+
+input:focus{
+  border-color: red;
+}
+
+button {
+  height: 40px;
+  font-weight: bold;
+  width: 120px;
+  border-radius: 10px;
+  background: rgb(47, 31, 194);
+}
+
+button:hover {
+  border-color: red;
+}
+
+#checkbox {
+  height: 15px;
+}
+
+.hidden {
+  display: none;
+}
+
+#history {
+  margin-top: 10px;
+}

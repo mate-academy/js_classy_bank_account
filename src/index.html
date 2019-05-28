@@ -4,11 +4,37 @@
   <title>Title</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
     <div class="container">
-    
+      <h2>Fill the fields</h2>
+     <form name="account">
+       Name <input name="name" type="text" placeholder="Oksana"> <br>
+       Birthday <input name="birthday" type="text" placeholder="17.11.1995"> <br>
+       Money <input name="amount" type="number" placeholder="1000"> <br>
+       <button name="submit">Create account</button>
+       <button name="show">Show account</button>
+     </form>
+     <label>
+       <input type="checkbox" id="checkbox"> <span>Add some information</span>
+    </label>
+     <div id="information" class="hidden">
+       <div id="income">
+         <span>Income</span>
+         Amount <input type="number">
+         Categoty <input type="text">
+         <button name="income">Add income</button>
+       </div> 
+       <div id="expense">
+         <span>Expense</span>
+         Amount <input type="number">
+         Categoty <input type="text">
+         <button name="expense">Add expense</button>
+       </div> 
+       <button id="history">History</button>
+     </div>
     </div>
   
   <script src="script.js"></script>
