@@ -1,10 +1,8 @@
 class Person {
-  constructor(name, dateOfBirth, amount) {
+  constructor(name, birth, amount) {
     this.name = name;
-    this.dateOfBirth = dateOfBirth;
     this.amount = amount;
-    this.date = new Date;
-    this.age = this.date.getFullYear() - this.dateOfBirth.slice(-4) - 1;
+    this.age = this.getDate(birth)
     this.history = [`Initial: ${this.amount}`];
   }
 
@@ -16,6 +14,7 @@ class Person {
     this.amount += receipts;
     this.history.push(`${comment}: ${receipts}`);
   }
+
   withdrawMoney(withdraw, comment) {
     this.amount -= withdraw;
     this.history.push(`${comment}: -${withdraw}`);
@@ -23,6 +22,11 @@ class Person {
 
   getAccountHistory() {
     console.log(this.history);
+  }
+
+  getDate(date) {
+    const arr = date.split('.');
+    return new Date(new Date() - new Date(`${arr[2]}/${arr[1]}/${arr[0]}`)).getFullYear() - 1970;
   }
 };
 
