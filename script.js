@@ -1,45 +1,42 @@
 'use strict';
 
-class Person_account {
-  constructor(person_name, person_birth_date, person_money_amount) {
-    this.person_name = person_name;
-    this.person_birth_date = person_birth_date;
-    this.person_money_amount = person_money_amount;
-    this.person_age = this.get_person_age();
-    this.initial_balance = `Initial: ${person_money_amount}`;
-    this.account_history = [this.initial_balance];
+class PersonAccount {
+  constructor(personName, personBirthDate, personMoneyAmount) {
+    this.personName = personName;
+    this.personBirthDate = personBirthDate;
+    this.personMoneyAmount = personMoneyAmount;
+    this.accountHistory = [`Initial: ${this.personMoneyAmount}`];
   }
 
-  get_person_age() {
-    const date_now = new Date();
-    const year_now = date_now.getFullYear();
-    const person_born_year = this.person_birth_date.slice(-4);
-    const person_age = year_now - person_born_year;
-    return person_age;
+  getPersonAge() {
+    const dateNow = new Date();
+    const yearNow = dateNow.getFullYear();
+    const personBornYear = this.personBirthDate.slice(-4);
+    const personAge = yearNow - personBornYear;
+    return personAge;
   }
 
-  get_info() {
-    console.log(`Name: ${this.person_name}, Age: ${this.person_age}, Amount: ${this.person_money_amount}$`);
+  getInfo() {
+    const personAge = this.getPersonAge();
+    console.log(`Name: ${this.personName}, Age: ${personAge}, Amount: ${this.personMoneyAmount}$`);
   }
 
-  add_money(sum, info) {
-    const minus = false;
-    this.person_money_amount += sum;
-    this.save_account_history(sum, info, minus);
+  addMoney(sum, info) {
+    this.personMoneyAmount += sum;
+    this.saveAccountHistory(sum, info);
   }
 
-  withdraw_money(sum, info) {
-    const minus = true;
-    this.person_money_amount -= sum;
-    this.save_account_history(sum, info, minus);
+  withdrawMoney(sum, info) {
+    this.personMoneyAmount -= sum;
+    this.saveAccountHistory(sum, info);
   }
 
   getAccountHistory() {
-    console.log(this.account_history);
+    console.log(this.accountHistory);
   }
 
-  save_account_history(sum, info, minus) {
-    const user_action = minus ? `${info}: -${sum}` : `${info}: ${sum}`;
-    this.account_history.push(user_action);
+  saveAccountHistory(sum, info) {
+    const userAction = `${info}: ${sum}`;
+    this.accountHistory.push(userAction);
   }
 }
