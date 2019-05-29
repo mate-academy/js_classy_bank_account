@@ -28,7 +28,7 @@ class PersonAccount {
 
   withdrawMoney(sum, info) {
     this.personMoneyAmount -= sum;
-    this.saveAccountHistory(sum, info);
+    this.saveAccountHistory(`-${sum}`, info);
   }
 
   getAccountHistory() {
