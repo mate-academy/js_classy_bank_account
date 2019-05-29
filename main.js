@@ -24,7 +24,7 @@ class Person {
     };
   }
   getInfo() {
-    return `Name: ${this.name}, Age: ${this.age()}, Amount: ${this.currentAmount}$`;
+    return `Name: ${this.name}, Age: ${this.age()}, Amount: ${this.amount}$`;
   };
   addMoney(amount, depositingFunds) {
     this.currentAmount += amount;
@@ -32,7 +32,7 @@ class Person {
   };
   withdrawMoney(amount, withdrawals) {
     this.currentAmount -= amount;
-    this.operations(amount, withdrawals);
+    this.operations(-amount, withdrawals);
   };
   getAccountHistory() {
     return this.accountHistory;
