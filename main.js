@@ -11,7 +11,6 @@ class Person {
   constructor(name, birthDate, amountOfCash) {
     this.birthDate = birthDate;
     this.name = name;
-    this.age = calculateAge(this.birthDate);
     this.amount = amountOfCash;
     this.history = [`Initial: ${amountOfCash}`];
   }
@@ -32,6 +31,10 @@ class Person {
 
   getAccountHistory() {
     console.log(this.history);
+  }
+
+  get age() {
+    return calculateAge(this.birthDate);
   }
 }
 
