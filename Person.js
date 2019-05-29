@@ -25,7 +25,7 @@ class Person {
   }
 
   getAge(date) {
-    const [day, month, year] = date.split('.')
+    const [day, month, year] = date.split('.');
     return new Date(new Date() - new Date(year, month, day)).getFullYear() - 1970;
   }
 };
