@@ -2,12 +2,12 @@ class Person {
   constructor(name, birth, amount) {
     this.name = name;
     this.amount = amount;
-    this.age = this.getDate(birth)
+    this.dayOfBirth = birth
     this.history = [`Initial: ${this.amount}`];
   }
 
   getInfo() {
-    console.log(`Name: ${this.name}, Age: ${this.age}, Amount: ${this.amount}$.`);
+    console.log(`Name: ${this.name}, Age: ${this.getAge(this.dayOfBirth)}, Amount: ${this.amount}$.`);
   }
 
   addMoney(receipts, comment) {
@@ -24,9 +24,9 @@ class Person {
     console.log(this.history);
   }
 
-  getDate(date) {
-    const arr = date.split('.');
-    return new Date(new Date() - new Date(`${arr[2]}/${arr[1]}/${arr[0]}`)).getFullYear() - 1970;
+  getAge(date) {
+    const [day, month, year] = date.split('.')
+    return new Date(new Date() - new Date(year, month, day)).getFullYear() - 1970;
   }
 };
 
