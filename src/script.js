@@ -2,35 +2,41 @@
 
 class Person {
 
-   calculateAge(birthday) {
-        const ageDifMs = Date.now() - birthday.getTime();
-        const ageDate = new Date(ageDifMs);
-        return Math.abs(ageDate.getUTCFullYear() - 1970);
-    }
-
     constructor(name, birthday, money) {
         this.name = name;
         this.birthday = this.calculateAge(new Date (birthday.split('.').reverse().join(', ')));
         this.money = money;
-        this.acount = [`Initial: ${money}`];
+        this.acount = [{Initial: this.money}];
+    }
+
+    calculateAge(birthday) {
+        return Math.floor((Date.now()-Date.parse(birthday))/(60*60*24*366*1000));
     }
 
     getInfo() {
-        console.log(`Name: ${this.name}, Age: ${this.birthday}, Amount: ${this.money}$`);
+       return `Name: ${this.name}, Age: ${this.birthday}, Amount: ${this.money}$`;
     }
 
     addMoney(income, category) {
+        this.category = category;
+        this.income = income;
         this.money += income;
-        this.acount.push(`${category}: ${income}`);
+        this.history(this.income, this.category);
     }
 
     withdrawMoney(expense, category) {
+        this.category = category;
+        this.expense = expense;
         this.money -= expense;
-        this.acount.push(`${category}: -${expense}`);
+        this.history(-this.expense, this.category);
+    }
+
+    history(amount, category) {
+       return this.acount.push({[category]: amount})
     }
 
     getAccountHistory() {
-      console.log(this.acount);                                  
+      return this.acount;                                  
    } 
 };
 
@@ -69,7 +75,8 @@ form.submit.addEventListener('click', (event) => {
 //отображение информации
 form.show.addEventListener('click', (event)=>{
     event.preventDefault();
-    person.getInfo();
+    console.log(person.getInfo());
+    
 })
 
 //переключатель
@@ -100,5 +107,5 @@ document.getElementById('expense').children[3].addEventListener('click', (event)
 //показ истории
 document.getElementById('history').addEventListener('click', (event) => {
     event.preventDefault();
-    person.getAccountHistory();
+    console.log(person.getAccountHistory());
 })
