@@ -1,40 +1,52 @@
 class Person {
-    constructor (name, dateOfBirth, money) {
+    constructor(name, dateOfBirth, money) {
         this.name = name;
-        this.dateOfBirth = dateOfBirth;
+        this.dateOfBirth = new Date(...dateOfBirth.split('.').reverse());
         this.money = money;
-        // this.history = new Set([{ Initial: money }]);
-        this.history = [`Initial: ${money}`];
+        this.history = [
+            {
+                info: 'Initial',
+                amount: money,
+                timestamp: new Date()
+            }
+            ];
     }
 
-    _getClientAge () {
-        const arrayBDay = this.dateOfBirth.split('.').reverse();
-        const bDay = new Date(...arrayBDay);
-        const ageDifMs = Date.now() - bDay.getTime();
-        const ageDate = new Date(ageDifMs); // miliseconds from epoch
-        return Math.abs(ageDate.getUTCFullYear() - 1970);
-    }
-
-    _logHistory (cash, info) {
-        this.history.push(`${info}: ${cash}`);
-    }
-
-    getInfo () {
+    getInfo() {
         console.log(`Name: ${this.name}, Age: ${this._getClientAge()}, Amount: ${this.money}$`)
     }
 
-    addMoney (cash, info) {
+    addMoney(cash, info) {
         this.money += cash;
         this._logHistory(cash, info);
     }
 
-    withdrawMoney (cash, info) {
+    withdrawMoney(cash, info) {
         this.money -= cash;
         this._logHistory(`-${cash}`, info);
     }
 
-    getAccountHistory () {
-        console.log(this.history);
+    getAccountHistory() {
+        const accountHistory = this.history.map( item => {
+            return `${item.info}: ${item.amount}`;
+        });
+        console.log(accountHistory);
+    }
+
+    _getClientAge() {
+        const ageDifMs = Date.now() - this.dateOfBirth.getTime();
+        const ageDate = new Date(ageDifMs);
+        return Math.abs(ageDate.getUTCFullYear() - 1970);
+    }
+
+    _logHistory(cash, info) {
+        this.history.push(
+            {
+                info: info,
+                amount: cash,
+                timestamp: new Date()
+            }
+            );
     }
 }
 
