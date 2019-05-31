@@ -3,17 +3,20 @@ class Person {
     this.name = name;
     this.birthday = birthday;
     this.initialAmount = amount;
-    this.history = [`Initial: ${this.initialAmount}`];
+    this.history = [{Initial: this.initialAmount}];
   }
 
   getAge() {
     const currentDate = new Date();
     const birthDate = this.birthday.split('.');
-    const months = currentDate.getMonth() - (birthDate[1] - 1);
+    const birthYear = birthDate[2];
+    const birthMonth = (birthDate[1] - 1);
+    const birthDay = birthDate[0];
+    const months = currentDate.getMonth() - birthMonth;
 
-    let age = currentDate.getFullYear() - birthDate[2];
+    let age = currentDate.getFullYear() - birthYear;
     
-    if (months < 0 || (months === 0 && currentDate.getDate() < birthDate[0])) {
+    if (months < 0 || (months === 0 && currentDate.getDate() < birthDay)) {
       age--;
     }
 
@@ -21,26 +24,32 @@ class Person {
   };
 
   getInfo() {
-    console.log(`Name: ${this.name}, Age: ${this.getAge()}, Amount: ${this.initialAmount}$`);
+    return `Name: ${this.name}, Age: ${this.getAge()}, Amount: ${this.initialAmount}$`;
   }
 
   addMoney(value, from) {
     this.initialAmount += value;
-    this.history.push(`${from}: ${value}`);
+    this.createAccountHistory(from, value);
   }
 
   withdrawMoney(value, asgmt) {
     this.initialAmount -= value;
-    this.history.push(`${asgmt}: -${value}`);
+    this.createAccountHistory(asgmt, -value);
+  }
+
+  createAccountHistory(key, value) {
+    const operation = {};
+    operation[key] = value;
+    this.history.push(operation);
   }
 
   getAccountHistory() {
-    console.log(this.history);
+    return this.history;
   }
 }
 
 const kate = new Person('Kate', '26.09.1993', 5000);
-const dmytro = new Person('Dmytro', '15.05.1992', 10000);
+const dmytro = new Person('Dmytro', '01.06.1992', 10000);
 
 kate.getInfo();
 kate.addMoney(10000, 'salary');
