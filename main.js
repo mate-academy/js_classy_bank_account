@@ -7,9 +7,9 @@ class Person {
     this.amount = amount;
     this.currentAmount = this.amount;
     const [year, month, day] = this.dateOfBirth;
-    this.accountHistory = [`Initial: ${amount}`];
+    this.accountHistory = [{ 'Initial': amount }];
     this.operations = function(value, key) {
-      this.accountHistory.push(`${key}: ${value}`);
+      this.accountHistory.push({ [key]: value });
     };
 
     this.age = function() {
