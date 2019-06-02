@@ -1,16 +1,15 @@
-'use sctrict';
+"use sctrict";
 
 class Person {
   constructor(name, birthDate, amount) {
     this.name = name;
-    this.initialAmount = amount;
     this.amount = amount;
     this.birthDate = birthDate;
-    this.buys = [];
+    this.history = [`initial: ${amount}`];
   }
 
-  age() {
-    const birth = this.birthDate.split('.').reverse();
+  getAge() {
+    const birth = this.birthDate.split(".").reverse();
     const dateofBirth = new Date(birth);
     const ageDifMs = Date.now() - dateofBirth.getTime();
     const ageDate = new Date(ageDifMs);
@@ -18,31 +17,33 @@ class Person {
     return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 
-  addMoney(salary) {
-    this.amount += salary;
+  addMoney(currency, reason) {
+    this.amount += currency;
+    this.history.push(`${reason}: ${currency}`);
   }
 
   withdrawMoney(spendMoney, reason) {
     this.amount -= spendMoney;
-    this.buys.push(` ${reason}: ${-spendMoney}`);
+    this.history.push(`${reason}: ${-spendMoney}`);
   }
 
   getInfo() {
-    console.log(`Name: ${this.name}, Age: ${this.age()}, Amount: ${this.amount}$`);  
+    console.log(
+      `Name: ${this.name}, Age: ${this.getAge()}, Amount: ${this.amount}$`
+    );
   }
 
   getAccountHistory() {
-    console.log(`Initial: ${this.initialAmount}, salary: ${this.amount},${this.buys}`); 
+    console.log(this.history);
   }
-
 }
 
-const dmytro = new Person('Dmytro', '26.11.1994', 1000);
-const pavel = new Person('Pavel', '06.06.1990', 400);
+const dmytro = new Person("Dmytro", "26.11.1994", 1000);
+const pavel = new Person("Pavel", "06.06.1990", 400);
 
 dmytro.getInfo();
-dmytro.addMoney(2000, 'salary');
-dmytro.withdrawMoney(500, 'new phone');
+dmytro.addMoney(2000, "salary");
+dmytro.withdrawMoney(500, "new phone");
 dmytro.getInfo();
-dmytro.withdrawMoney(500, 'apartment rent');
+dmytro.withdrawMoney(500, "apartment rent");
 dmytro.getAccountHistory();
