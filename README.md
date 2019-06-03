@@ -1,3 +1,5 @@
+- [For review GitHub Pages](https://batsenko.github.io/js_classy_bank_account/)
+
 # Classy Bank Account
 
 Create a **class** for working with bank account data of a person.

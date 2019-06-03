@@ -8,40 +8,33 @@ class Person {
   }
   
   getAge() {
-	let dateold = new Date(this.date.replace( /(\d{2}).(\d{2}).(\d{4})/, "$2/$1/$3"));
-    let datenew = new Date(Date.now());
-    let ynew = datenew.getFullYear();
-    let mnew = datenew.getMonth();
-    let dnew = datenew.getDate();
-    let yold = dateold.getFullYear();
-    let mold = dateold.getMonth();
-    let dold = dateold.getDate();
-    let diff = ynew - yold;
-    if (mold > mnew) diff--;
-    else {
-      if (mold == mnew) {
-        if (dold > dnew) diff--;
-      }
-    }
-    return diff;
+    let birthdate = new Date(this.date.replace(/(\d{2}).(\d{2}).(\d{4})/, "$2/$1/$3"));
+    let cur = new Date();
+    let diff = cur - birthdate;
+
+    return Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
   }
   
   getInfo() {
-    console.log(`Name: ${this.name}, Age: ${this.getAge()}, Amount: ${this.money}$`);
+    return `Name: ${this.name}, Age: ${this.getAge()}, Amount: ${this.money}$`;
   }
   
   addMoney(count, text) {
     this.money += count;
-    this.history.push(`${text}: ${count}$`);
+    this.addHistory(text, count);
   }
   
   withdrawMoney(count, text) {
     this.money -= count;
-    this.history.push(`${text}: -${count}$`);
+    this.addHistory(text, -count);
+  }
+
+  addHistory(text, count) {
+    this.history.push(`${text}: ${count}$`);
   }
   
   getAccountHistory() {
-	return this.history;
+	  return this.history;
   }
 }
 const dmytro = new Person('Dmytro', '26.11.1994', 1000);
