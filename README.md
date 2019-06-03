@@ -1,6 +1,6 @@
-# Classy Bank Account
+# Constructive Bank Account
 
-Create a **class** for working with bank account data of a person.
+Create a **function/constructor** for working with bank account data of a person.
 
 **Requirements:**
 
