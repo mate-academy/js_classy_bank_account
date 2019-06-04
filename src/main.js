@@ -1,46 +1,48 @@
 'use strict';
- class Person {
-    constructor (name, dateOfBirth, amount) {
-        this.name = name;
-        this.dateOfBirth = dateOfBirth.split('.');
-        const [day, month, year] = this.dateOfBirth;
-        this.amount = amount;
-        this.currentAmount = this.amount;
-        this.accountHistory = [{'initial': amount}];
+class Person {
+  constructor (name, dateOfBirth, amount) {
+    this.name = name;
+    this.dateOfBirth = dateOfBirth.split('.');
+    const [day, month, year] = this.dateOfBirth;
+    this.amount = amount;
+    this.currentAmount = this.amount;
+    this.accountHistory = [{'initial': amount}];
 
-        this.age = function() {
-            const currentYear = new Date().getFullYear();
-            const currentMonth = new Date().getMonth() + 1;
-            const currentDay = new Date().getDate();
-            if (currentMonth < month || currentMonth === month && currentDay < day) {
-                return currentYear - year + 1;
-            }
-            return currentYear - year;
-        };
-
-        this.transaction = function(value, info) {
-            this.accountHistory.push({[info]: value})
-        };
-    }
-
-    getInfo() {
-         console.log(`Name: ${this.name}, Age: ${this.age()}, Amount: ${this.currentAmount}`)
+    this.age = function() {
+      const date = new Date();
+      const currentYear = date.getFullYear();
+      const currentMonth = date.getMonth() + 1;
+      const currentDay = date.getDate();
+      const age = currentYear - year;
+      if (currentMonth < month || currentMonth === month && currentDay < day) {
+        return age + 1;
+      }
+      return age;
     };
 
-    addMoney (income, info) {
-        this.currentAmount += income;
-        this.transaction(income, info)
+    this.transaction = function(value, info) {
+      this.accountHistory.push({[info]: value})
     };
+  }
 
-     withdrawMoney (outgo, info) {
-         this.currentAmount -= outgo;
-         this.transaction(`-${outgo}`, info)
-     };
+  getInfo() {
+    return `Name: ${this.name}, Age: ${this.age()}, Amount: ${this.currentAmount}`;
+  };
 
-     getAccountHistory() {
-         console.log(this.accountHistory);
-     };
- }
+  addMoney (income, info) {
+    this.currentAmount += income;
+    this.transaction(income, info)
+  };
+
+  withdrawMoney (outgo, info) {
+    this.currentAmount -= outgo;
+    this.transaction(`-${outgo}`, info)
+  };
+
+  getAccountHistory() {
+    return this.accountHistory;
+  };
+}
 
 
 
