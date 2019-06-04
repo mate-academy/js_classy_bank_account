@@ -3,7 +3,20 @@ class Person {
     this.name = name;
     this.age = this.getDate(birth);
     this.amount = amount;
-    this.accountHistory = [];
+    this.currentAmount = this.amount;
+    this.accountHistory = [{'initial': this.amount}];
+    this.addOperation = function(sign, value, key) {
+      switch(sign) {
+        case '+': 
+          this.currentAmount += value;
+          this.accountHistory.push({[key]: value});
+          break;
+        case '-': 
+          this.currentAmount -= value;
+          this.accountHistory.push({[key]: -value});
+          break;
+      }
+    }
   }
 
   getInfo() {
@@ -11,13 +24,11 @@ class Person {
   }
 
   addMoney(money, income) {
-    this.amount += money;
-    this.accountHistory.push(`${income}: +${money}$`);
+    this.addOperation('+', money, income);
   }
 
   withdrawMoney(money, consumption) {
-    this.amount -= money;
-    this.accountHistory.push(`${consumption}: -${money}$`);
+    this.addOperation('-', money, consumption);
   }
 
   getAccountHistory() {
