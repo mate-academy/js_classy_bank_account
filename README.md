@@ -1,4 +1,5 @@
 # Classy Bank Account
+GH-Pages https://sherjlok15.github.io/js_classy_bank_account/
 
 Create a **class** for working with bank account data of a person.
 
