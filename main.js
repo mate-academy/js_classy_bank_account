@@ -1,12 +1,13 @@
 class Person {
   constructor(name, birthday, money) {
     this.name = name;
+    this.birthday = birthday;
     this.cashBrush = 0;
     this.history = [`Initial: ${money}`];
   }
 
   getInfo() {
-    console.log(`Name: ${this.name}, Age: ${this.calculateAge(birthday)}, Amount: ${this.cashBrush}$`);
+    console.log(`Name: ${this.name}, Age: ${this.calculateAge(this.birthday)}, Amount: ${this.cashBrush}$`);
   }
 
   addMoney(money, thing) {
