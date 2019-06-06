@@ -1,4 +1,4 @@
-"use sctrict";
+'use sctrict';
 
 class Person {
   constructor(name, birthDate, amount) {
@@ -9,7 +9,7 @@ class Person {
   }
 
   getAge() {
-    const birth = this.birthDate.split(".").reverse();
+    const birth = this.birthDate.split('.').reverse();
     const dateofBirth = new Date(birth);
     const ageDifMs = Date.now() - dateofBirth.getTime();
     const ageDate = new Date(ageDifMs);
@@ -38,12 +38,12 @@ class Person {
   }
 }
 
-const dmytro = new Person("Dmytro", "26.11.1994", 1000);
-const pavel = new Person("Pavel", "06.06.1990", 400);
+const dmytro = new Person('Dmytro', '26.11.1994', 1000);
+const pavel = new Person('Pavel', '06.06.1990', 400);
 
 dmytro.getInfo();
-dmytro.addMoney(2000, "salary");
-dmytro.withdrawMoney(500, "new phone");
+dmytro.addMoney(2000, 'salary');
+dmytro.withdrawMoney(500, 'new phone');
 dmytro.getInfo();
-dmytro.withdrawMoney(500, "apartment rent");
+dmytro.withdrawMoney(500, 'apartment rent');
 dmytro.getAccountHistory();
