@@ -5,7 +5,7 @@ class Person {
     this.name = name;
     this.amount = amount;
     this.currentAmount = amount;
-    let [day, month, year] = birthday.split('.');
+    const [day, month, year] = birthday.split('.');
     this.accountHistory = [{'Initial': amount}];
 
     this.operations = function (value, str) {
@@ -14,10 +14,10 @@ class Person {
 
     this.age = function getAge() {
       const newDate = new Date();
-      let currentYear = newDate.getFullYear();
-      let currentMonth = newDate.getMonth() + 1;
-      let currentDay = newDate.getDate();
-      let age = currentYear - year;
+      const currentYear = newDate.getFullYear();
+      const currentMonth = newDate.getMonth() + 1;
+      const currentDay = newDate.getDate();
+      const age = currentYear - year;
       if (currentMonth < month || currentMonth === month && currentDay < day) {
         return (age - 1);
       }
@@ -46,7 +46,6 @@ class Person {
 
 
 const Dima = new Person('Dima', '08.11.1981', 1000);
-console.log(Dima.getInfo());
 Dima.addMoney(500, 'salary');
 Dima.withdrawMoney(200, 'food');
 console.log(Dima.getAccountHistory());
