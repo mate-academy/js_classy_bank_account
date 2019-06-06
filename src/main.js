@@ -20,7 +20,7 @@ class Person {
   }
 
   getInfo() {
-    console.log(`Name: ${this.name}, Age: ${this.age}, Amount: ${this.amount}$`)
+    return `Name: ${this.name}, Age: ${this.age}, Amount: ${this.amount}$`;
   }
 
   addMoney(money, income) {
@@ -32,7 +32,7 @@ class Person {
   }
 
   getAccountHistory() {
-    console.log(`${this.accountHistory}`);
+    return `${this.accountHistory}`;
   }
 
   getDate(date) {
