@@ -1,12 +1,15 @@
+'use strict';
+
 class Person {
   constructor(name, birthday, money) {
     this.name = name;
+    this.birthday = birthday;
     this.cashBrush = 0;
     this.history = [`Initial: ${money}`];
   }
 
   getInfo() {
-    console.log(`Name: ${this.name}, Age: ${this.calculateAge(birthday)}, Amount: ${this.cashBrush}$`);
+    console.log(`Name: ${this.name}, Age: ${this.calculateAge(this.birthday)}, Amount: ${this.cashBrush}$`);
   }
 
   addMoney(money, thing) {
@@ -31,9 +34,10 @@ class Person {
   }
 
   calculateAge(birthday) {
-    const bDay = (birthday.split('.').reverse().join(', '));
-    const age = new Date().getFullYear() - new Date(bDay).getFullYear() -1;
-    return age;
+    const bDay = birthday.split('.').reverse().join(', ');
+    const age = Date.now() - new Date(bDay).getTime();
+    const userAge = new Date(age);
+    return Math.abs(userAge.getUTCFullYear() - 1970);
   }
 }
 
