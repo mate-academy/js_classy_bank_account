@@ -10,7 +10,6 @@ class Person {
         this.history = [`Initial: ${balance}`];
     }
 
-
     getInfo() {
         console.log(`Name: ${this.name}, Age: ${this.age(this.dob)}, Amount: ${this.balance}$`)
     };
