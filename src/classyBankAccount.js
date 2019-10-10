@@ -2,15 +2,24 @@ class Person {
   constructor(name, date, amount) {
     this.name = name; 
     this.date = date; 
-    this.age = this.yearCount(this.date); 
+    this.age = Person.getAge(date); 
     this.amount = amount; 
     this.accountHistory = [`Initial: ${amount}`]; 
   }
 
-  yearCount(date) {
-    let thisYear = new Date().getFullYear();
-    let birthYear = this.date.slice(-4); 
-    return thisYear - birthYear;  
+  static getAge(date) {
+    const birthDay = date.split('.')[0]; 
+    const birthMonth = date.split('.')[1]; 
+    const birthYear = date.split('.')[2]; 
+    let yearNow = new Date().getFullYear();
+    let monthNow = new Date().getMonth() + 1;
+    let dayNow = new Date().getDate();
+
+    if (monthNow === birthMonth && dayNow < birthDay || monthNow < birthMonth) {
+      return yearNow - birthYear - 1;
+    } else {
+      return yearNow - birthYear;
+    }
   }
 
   getInfo() {
