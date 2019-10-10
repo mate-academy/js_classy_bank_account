@@ -3,36 +3,38 @@ class Person {
     this.name = name;
     this.birthDate = birthDate;
     this.amount = amount;
-    this.age = getAge(this.birthDate);
-    this.accountHistory = [`Initial: ${this.amount}`];
+    this.accountHistory = [{name: 'initial', value: this.amount}];
   }
 
   getInfo() {
-    console.log(`Name: ${this.name}, Age: ${this.age}, Amount: ${this.amount}\$`);
+    return (`Name: ${this.name}, Age: ${this.getAge(this.birthDate)}, Amount: ${this.amount}\$`);
   }
 
   addMoney(amount, source) {
     this.amount += amount;
-    this.accountHistory.push(`${source}: ${amount}`);
+    this.pushItems(this.accountHistory, amount, source);
   }
 
-  withdrawMoney(amount, target) {
+  withdrawMoney(amount, source) {
     this.amount -= amount;
-    this.accountHistory.push(`${target}: -${amount}`);
+    this.pushItems(this.accountHistory, -amount, source);
   }
 
   getAccountHistory() {
-    console.log(this.accountHistory);
+    const historyList = [];
+    for (let keys of this.accountHistory) {
+      historyList.push(`${keys.name}: ${keys.value}`);
+    }
+    return historyList;
   }
 
-}
-
-function getAge(birthDate) {
-  const normalizeDate = birthDate.split('.');
-  let tmp = normalizeDate[0];
-  normalizeDate[0] = normalizeDate[1];
-  normalizeDate[1] = tmp;
-  birthDate = normalizeDate.join('.')
-  let age = Math.abs(new Date(Date.now() - Date.parse(birthDate)).getUTCFullYear() - 1970);
-  return age;
+  getAge(birthDate) {
+    birthDate = birthDate.split('.').reverse().join('.');
+    let age = Math.abs(new Date(Date.now() - Date.parse(birthDate)).getUTCFullYear() - 1970);
+    return age;
+  }
+  
+  pushItems(accountHistory, amount, source) {
+    accountHistory.push({name: source, value: amount});
+  }
 }
