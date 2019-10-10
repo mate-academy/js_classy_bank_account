@@ -8,7 +8,7 @@ class BankAccount {
     this.accountHistory = [`Initial: ${moneyAmount}`];
   }
 
-  getInfo = function() {
+  getInfo() {
     this.age = function() {
       let date = this.birth.split('.');
       let day = date[0];
@@ -29,17 +29,17 @@ class BankAccount {
     console.log(`Name: ${this.name}, Age: ${this.age(this.birth)}, Amount: ${this.moneyAmount}$`);
   }
 
-  addMoney = function(sum, service) {
+  addMoney(sum, service) {
     this.moneyAmount += sum;
     this.accountHistory.push(`${service}: ${sum}`);
   }
 
-  withdrawMoney = function(withdrawSum, service) {
+  withdrawMoney(withdrawSum, service) {
     this.moneyAmount -= withdrawSum;
     this.accountHistory.push(`${service}: -${withdrawSum}`);
   }
 
-  getAccountHistory = function() {
+  getAccountHistory() {
     console.log(this.accountHistory);
   }
 }
