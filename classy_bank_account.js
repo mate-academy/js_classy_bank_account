@@ -1,3 +1,7 @@
+function pushItems(history, amount, transaction) {
+    history.push({name: transaction, value: amount});
+}
+
 class Person {
     constructor(name, birth, balance) {
         this.name = name;
@@ -16,12 +20,12 @@ class Person {
 
     addMoney(sum, transaction) {
         this.balance = +this.balance + sum;
-        this.history.push({name: transaction, value: sum});
+        pushItems(this.history, sum, transaction)
     };
 
     withdrawMoney(sum, transaction) {
         this.balance = +this.balance - sum;
-        this.history.push({name: transaction, value: -sum});
+        pushItems(this.history, -sum, transaction)
     };
 
     getAccountHistory() {
