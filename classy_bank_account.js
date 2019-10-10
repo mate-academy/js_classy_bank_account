@@ -1,42 +1,42 @@
 class Person {
-    constructor(name, dob, balance) {
+    constructor(name, birth, balance) {
         this.name = name;
-        this.dob = dob;
+        this.birth = birth;
         this.balance = balance;
-        this.history = [`Initial: ${balance}`];
+        this.history = [{name: 'Initial', value: this.balance}];
     }
 
     getInfo() {
-        const dobDate = this.dob.split('.').reverse().join('-');
+        const dateOfBirth = this.birth.split('.').reverse().join('-');
         const age = function () {
-            return Math.floor((new Date() - new Date(dobDate).getTime()) / 3.15576e+10)
+            return Math.floor((new Date() - new Date(dateOfBirth).getTime()) / 3.15576e+10)
         };
-        console.log(`Name: ${this.name}, Age: ${age(this.dob)}, Amount: ${this.balance}$`)
+        return `Name: ${this.name}, Age: ${age(this.birth)}, Amount: ${this.balance}$`
     };
 
     addMoney(sum, transaction) {
         this.balance = +this.balance + sum;
-        this.history.push(`${transaction}: ${sum}`);
+        this.history.push({name: transaction, value: sum});
     };
 
     withdrawMoney(sum, transaction) {
         this.balance = +this.balance - sum;
-        this.history.push(`${transaction}: -${sum}`);
+        this.history.push({name: transaction, value: -sum});
     };
 
     getAccountHistory() {
-        console.log(this.history);
+        return this.history;
     };
 }
 
 const dmytro = new Person('Dmytro', '26.11.1994', 1000);
 const pavel = new Person('Pavel', '06.06.1990', 400);
 
-dmytro.getInfo(); // print `Name: Dmytro, Age: 24, Amount: 1000$`
+console.log(dmytro.getInfo()); // print `Name: Dmytro, Age: 24, Amount: 1000$`
 dmytro.addMoney(2000, 'salary');
 dmytro.withdrawMoney(500, 'new phone');
-dmytro.getInfo(); // Name: Dmytro, Age: 24, Amount: 2500$
+console.log(dmytro.getInfo()); // Name: Dmytro, Age: 24, Amount: 2500$
 dmytro.withdrawMoney(500, 'apartment rent');
-dmytro.getAccountHistory(); // [ 'Initial: 1000', 'salary: 2000', 'new phone: -500', 'apartment rent: -500']
+console.log(dmytro.getAccountHistory()); // [ 'Initial: 1000', 'salary: 2000', 'new phone: -500', 'apartment rent: -500']
 
-pavel.getInfo(); // // Name: Pavel, Age: 29, Amount: 400$
+console.log(pavel.getInfo()); // // Name: Pavel, Age: 29, Amount: 400$
