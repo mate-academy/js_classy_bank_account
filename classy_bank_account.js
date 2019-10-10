@@ -3,15 +3,15 @@ class Person {
         this.name = name;
         this.dob = dob;
         this.balance = balance;
-        this.age = function () {
-            const dobDate = this.dob.split('.').reverse().join('-');
-            return Math.floor((new Date() - new Date(dobDate).getTime()) / 3.15576e+10)
-        };
         this.history = [`Initial: ${balance}`];
     }
 
     getInfo() {
-        console.log(`Name: ${this.name}, Age: ${this.age(this.dob)}, Amount: ${this.balance}$`)
+        const dobDate = this.dob.split('.').reverse().join('-');
+        const age = function () {
+            return Math.floor((new Date() - new Date(dobDate).getTime()) / 3.15576e+10)
+        };
+        console.log(`Name: ${this.name}, Age: ${age(this.dob)}, Amount: ${this.balance}$`)
     };
 
     addMoney(sum, transaction) {
