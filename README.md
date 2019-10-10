@@ -32,9 +32,4 @@ dmytro.getAccountHistory(); // [ 'Initial: 1000', 'salary: 2000', 'new phone: -5
 pavel.getInfo(); // // Name: Pavel, Age: <calculate yourself>, Amount: 400$
 ```
 
-**Tips:**
-
-- How to find a person's age:
-    - [https://stackoverflow.com/a/24181701/4449154](https://stackoverflow.com/a/24181701/4449154)
-    - [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Examples](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Examples)
-    - [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split)
+Use `new Date()` to get the current date: you might need that in order to compare with the person’s date of birth and calculate their age.
