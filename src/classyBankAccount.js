@@ -1,13 +1,12 @@
 class Person {
   constructor(name, date, amount) {
     this.name = name; 
-    this.date = date; 
-    this.age = Person.getAge(date); 
+    this.date = date;
     this.amount = amount; 
     this.accountHistory = [`Initial: ${amount}`]; 
   }
 
-  static getAge(date) {
+  _getAge(date) {
     const birthDay = date.split('.')[0]; 
     const birthMonth = date.split('.')[1]; 
     const birthYear = date.split('.')[2]; 
@@ -15,15 +14,12 @@ class Person {
     let monthNow = new Date().getMonth() + 1;
     let dayNow = new Date().getDate();
 
-    if (monthNow === birthMonth && dayNow < birthDay || monthNow < birthMonth) {
-      return yearNow - birthYear - 1;
-    } else {
-      return yearNow - birthYear;
-    }
+    let age = (monthNow === birthMonth && dayNow < birthDay || monthNow < birthMonth) ? yearNow - birthYear - 1 : yearNow - birthYear;
+    return this.age = age; 
   }
 
   getInfo() {
-    console.log(`Name: ${this.name}, Age: ${this.age}, Amount: ${this.amount}$`); 
+    return `Name: ${this.name}, Age: ${this._getAge(this.date)}, Amount: ${this.amount}$`; 
   }
 
   addMoney(money, info) {
@@ -37,7 +33,7 @@ class Person {
   }
 
   getAccountHistory() {
-    console.log(this.accountHistory.join(', ')); 
+    return this.accountHistory.join(', '); 
   }
 }
 
