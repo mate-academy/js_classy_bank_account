@@ -7,17 +7,17 @@ class Person {
   }
 
   getInfo() {
-    return (`Name: ${this.name}, Age: ${this.getAge(this.birthDate)}, Amount: ${this.amount}\$`);
+    return (`Name: ${this.name}, Age: ${Person.getAge(this.birthDate)}, Amount: ${this.amount}\$`);
   }
 
   addMoney(amount, source) {
     this.amount += amount;
-    this.pushItems(this.accountHistory, amount, source);
+    Person.pushItems(this.accountHistory, amount, source);
   }
 
   withdrawMoney(amount, source) {
     this.amount -= amount;
-    this.pushItems(this.accountHistory, -amount, source);
+    Person.pushItems(this.accountHistory, -amount, source);
   }
 
   getAccountHistory() {
@@ -28,13 +28,13 @@ class Person {
     return historyList;
   }
 
-  getAge(birthDate) {
+  static getAge(birthDate) {
     birthDate = birthDate.split('.').reverse().join('.');
     let age = Math.abs(new Date(Date.now() - Date.parse(birthDate)).getUTCFullYear() - 1970);
     return age;
   }
-  
-  pushItems(accountHistory, amount, source) {
+
+  static pushItems(accountHistory, amount, source) {
     accountHistory.push({name: source, value: amount});
   }
 }
