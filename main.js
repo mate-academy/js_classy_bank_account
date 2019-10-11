@@ -8,7 +8,7 @@ class Person {
         this.history = [{name: 'Initial', value: amount}];
     }
 
-    _calculateAge(dateOfBirth) {
+    static calculateAge(dateOfBirth) {
         const reverseDate = new Date(dateOfBirth.split('.').reverse());
         const difference = Date.now() - reverseDate.getTime();
         const msAge = new Date(difference);
@@ -22,7 +22,7 @@ class Person {
 
     getInfo() {
         return `Name: ${this.name}, 
-                Age: ${this._calculateAge(this.birthDay)}, 
+                Age: ${Person.calculateAge(this.birthDay)}, 
                 Amount: ${this.amount}$`;
     }
 
