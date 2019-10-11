@@ -14,28 +14,40 @@ class Person {
     }
 
     getAge() {
-        let yearNow = new Date().getFullYear();
-        let monthNow = new Date().getMonth() + 1;
-        let dayNow = new Date().getDate();
+        const yearNow = new Date().getFullYear();
+        const monthNow = new Date().getMonth() + 1;
+        const dayNow = new Date().getDate();
+        let result = yearNow - this.year;
         if (monthNow === this.month && dayNow < this.day || monthNow < this.month) {
-            return yearNow - this.year - 1;
-        } else {
-            return yearNow - this.year;
+            return result - 1;
         }
+        return result;
     }
 
     getInfo() {
         console.log(`Name: ${this.name}, Age: ${this.getAge()}, Amount: ${this.amount}\$`)
     }
 
-    addMoney(money, info) {
+    transactions(info, money) {
         this.amount += money;
         this.log.push({ transaction: info, amount: money });
     }
 
+    addMoney(money, info) {
+        this.transactions(info, money);
+    }
+
     withdrawMoney(money, info) {
-        this.amount -= money;
-        this.log.push({ transaction: info, amount: money });
+        this.transactions(info, -money);
+    }
+
+    getAccountHistory() {
+
+        const result = [];
+        for (const value of this.log) {
+            result.push(`${value.transaction}: ${value.amount}`);
+        }
+        return result;
     }
 
     getLog() {
