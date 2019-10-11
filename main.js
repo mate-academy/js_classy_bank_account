@@ -4,7 +4,7 @@ class Person {
     this.name = name;
     this.birth = birth;
     this.money = money;
-    this.moneyHistory = [];
+    this.moneyHistory = [{name: 'Initial', value: this.money}];
   }
 
   static calculateAge(birthday) {
@@ -15,26 +15,28 @@ class Person {
   }
 
   static createHistory(amount, reason, moneyHistoryVar) {
-    moneyHistoryVar.push(`${reason}: ${amount}`);
+    moneyHistoryVar.push({name: reason, value: amount});
   }
 
   getInfo() {
-    console.log(`Client: ${this.name}\nAge: ${Person.calculateAge(this.birth)}\nDate of birth: ${this.birth}\nMoney: ${this.money}`)
+    return `Client: ${this.name}\nAge: ${Person.calculateAge(this.birth)}\nDate of birth: ${this.birth}\nMoney: ${this.money}`;
   }
   addMoney(amount, reason) {
     this.money += amount;
     Person.createHistory(amount, reason, this.moneyHistory);
-    console.log(`${this.name}'s balance is: ${this.money}, added  ${amount} due to ${reason}`)
+    return `${this.name}'s balance is: ${this.money}, added  ${amount} due to ${reason}`;
   }
 
   withdrawMoney(amount, reason) {
     this.money -= amount;
     Person.createHistory(`-${amount}`, reason, this.moneyHistory);
-    console.log(`${this.name}'s balance is: ${this.money}, spent  ${amount} due to ${reason}`);
+    return `${this.name}'s balance is: ${this.money}, spent  ${amount} due to ${reason}`;
   }
 
   getAccountHistory() {
-    console.log(`${this.name}'s money history : ${this.moneyHistory.toString()}` );
+    const history = [];
+    this.moneyHistory.forEach(item => history.push(` ${item.name}: ${item.value}`));
+    return `${this.name}'s money history --- ${history.toString()}`;
   }
 
 }
@@ -42,10 +44,10 @@ class Person {
 const dmytro = new Person('Dmytro', '26.11.1994', 1000);
 const pavel = new Person('Pavel', '06.06.1990', 400);
 
-dmytro.getInfo();
-dmytro.addMoney(2000, 'salary');
-dmytro.withdrawMoney(500, 'new phone');
-dmytro.getInfo();
-dmytro.withdrawMoney(500, 'apartment rent');
-dmytro.getAccountHistory();
-pavel.getInfo();
+console.log(dmytro.getInfo());
+console.log(dmytro.addMoney(2000, 'salary'));
+console.log(dmytro.withdrawMoney(500, 'new phone'));
+console.log(dmytro.getInfo());
+console.log(dmytro.withdrawMoney(500, 'apartment rent'));
+console.log(dmytro.getAccountHistory());
+console.log(pavel.getInfo());
