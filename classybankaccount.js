@@ -10,7 +10,7 @@ class Person {
     }
 
     static calculateAge(birthday) {
-        const [thisMonth, thisDay, thisYear] = new Date().getFullYear();
+        const [thisMonth, thisDay, thisYear] = new Date().toLocaleDateString().split('/');
         const [bDay, bMonth, bYear] = birthday.split('.');
         let age = thisYear - bYear;
         if ((+thisMonth < +bMonth) && (+thisMonth === +bMonth && +thisDay < +bDay))  {
