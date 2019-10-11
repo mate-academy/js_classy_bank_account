@@ -7,9 +7,7 @@ class Person {
   }
 
   _getAge(date) {
-    const birthDay = date.split('.')[0]; 
-    const birthMonth = date.split('.')[1]; 
-    const birthYear = date.split('.')[2]; 
+    const [birthDay, birthMonth, birthYear] =  date.split('.'); 
     let yearNow = new Date().getFullYear();
     let monthNow = new Date().getMonth() + 1;
     let dayNow = new Date().getDate();
