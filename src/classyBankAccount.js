@@ -8,9 +8,9 @@ class Person {
 
   _getAge(date) {
     const [birthDay, birthMonth, birthYear] =  date.split('.'); 
-    let yearNow = new Date().getFullYear();
-    let monthNow = new Date().getMonth() + 1;
-    let dayNow = new Date().getDate();
+    const yearNow = new Date().getFullYear(),
+          monthNow = new Date().getMonth() + 1, 
+          dayNow = new Date().getDate();
 
     let age = (monthNow === birthMonth && dayNow < birthDay || monthNow < birthMonth) ? yearNow - birthYear - 1 : yearNow - birthYear;
     return this.age = age; 
