@@ -40,7 +40,7 @@ class Person {
     this.log.map((element, i) => {
       history[i] = element.name + " " + element.value;
     });
-    console.log(history);
+    return history;
   };
 
   withdrawMoney = function(sum, add) {
