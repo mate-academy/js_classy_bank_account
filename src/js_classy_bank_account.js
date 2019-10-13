@@ -21,7 +21,7 @@ class Person {
   };
 
   getInfo = function() {
-    console.log(
+    return (
       `Name: ${this.name}, Age: ${this._getAge()}, Amount: ${this.money}$`
     );
   };
