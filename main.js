@@ -4,7 +4,9 @@ class Person {
     this.birthDate = birthDate;
     this.age = this.getAge(birthDate);
     this.amount = amount;
-    this.accountHistory = [`Initial: ${this.amount}`];
+    this.accountHistory = [
+      { 'Initial': this.amount },
+    ];
   }
 
   getAge(birthDate) {
@@ -15,29 +17,31 @@ class Person {
     let yearNow = new Date().getFullYear();
     let monthNow = new Date().getMonth() + 1;
     let dayNow = new Date().getDate();
-    if (monthNow === month && dayNow < day || monthNow < month) {
-      return yearNow - year - 1;
-    } else {
-      return yearNow - year;
-    }
+    const result = (yearNow - year);
+    return (monthNow === month && dayNow < day || monthNow < month)
+      ? result - 1
+      : result;
   }
 
   getInfo() {
-    console.log(`Name: ${this.name}, Age: ${this.age}, Amount: ${this.amount}$`);
+    return (`Name: ${this.name}, Age: ${this.age}, Amount: ${this.amount}$`);
   }
 
-  addMoney(addSum, proceeds) {
-    this.amount += addSum;
-    this.accountHistory.push(`${proceeds}: ${addSum}`);
+  addToAccountHistory(amountOfMoney, purpose) {
+    this.amount += amountOfMoney;
+    this.accountHistory.push({ "Purpose": purpose, "Amount of money": amountOfMoney });
   }
 
-  withdrawMoney(withdrawSum, spentMoney) {
-    this.amount -= withdrawSum;
-    this.accountHistory.push(`${spentMoney}: -${withdrawSum}`);
+  addMoney(amountOfMoney, purpose) {
+    this.addToAccountHistory(amountOfMoney, purpose);
+  }
+
+  withdrawMoney(amountOfMoney, purpose) {
+    this.addToAccountHistory(-amountOfMoney, purpose);
   }
 
   getAccountHistory() {
-    console.log(this.accountHistory);
+    return this.accountHistory;
   }
 }
 
@@ -49,12 +53,12 @@ const pavel = new Person('Pavel', '06.06.1990', 400);
 
 //Tests
 
-dmytro.getInfo(); // print `Name: Dmytro, Age: <calculate yourself>, Amount: 1000$`
-dmytro.addMoney(2000, 'salary');
-dmytro.withdrawMoney(500, 'new phone');
-dmytro.getInfo(); // Name: Dmytro, Age: <calculate yourself>, Amount: 2500$
-dmytro.withdrawMoney(500, 'apartment rent');
-dmytro.getAccountHistory(); // [ 'Initial: 1000', 'salary: 2000', 'new phone: -500', 'apartment rent: -500']
+console.log(dmytro.getInfo()); // print `Name: Dmytro, Age: <calculate yourself>, Amount: 1000$`
+console.log(dmytro.addMoney(2000, 'salary'));
+console.log(dmytro.withdrawMoney(500, 'new phone'));
+console.log(dmytro.getInfo()); // Name: Dmytro, Age: <calculate yourself>, Amount: 2500$
+console.log(dmytro.withdrawMoney(500, 'apartment rent'));
+console.log(dmytro.getAccountHistory()); // [ 'Initial: 1000', 'salary: 2000', 'new phone: -500', 'apartment rent: -500']
 
 pavel.getInfo(); // Name: Pavel, Age: <calculate yourself>, Amount: 400$
 pavel.addMoney(800, 'salary');
