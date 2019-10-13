@@ -21,9 +21,7 @@ class Person {
   };
 
   getInfo = function() {
-    return (
-      `Name: ${this.name}, Age: ${this._getAge()}, Amount: ${this.money}$`
-    );
+    return `Name: ${this.name}, Age: ${this._getAge()}, Amount: ${this.money}$`;
   };
 
   addLog = function (sum, add) {
