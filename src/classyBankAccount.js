@@ -3,7 +3,7 @@ class Person {
     this.name = name; 
     this.date = date;
     this.amount = amount; 
-    this.accountHistory = {Initial: amount}; 
+    this.accountHistory = [{Initial: `${amount}`}]; 
   }
 
   _getAge(date) {
@@ -22,7 +22,8 @@ class Person {
 
   addHistory(money, info) {
     this.amount += money; 
-    this.accountHistory[info] =  money; 
+    let information = info; 
+    this.accountHistory.push({ [info]: `${money}` }); 
   }
   
   addMoney(money, info) {
@@ -33,13 +34,13 @@ class Person {
     this.addHistory(-money, info); 
   };
 
-  getAccountHistory() {
+  getAccountHistory = function() {
     let arr = []; 
-    for (let items of Object.entries(this.accountHistory)) {
-      arr.push(items.join(': ')); 
+    for (let i = 0; i < this.accountHistory.length; i++) {
+      arr.push(Object.entries(this.accountHistory[i]).flat(1).join(': ')); 
     }
-    return arr.join(", ");
-  }
+    return arr.join(', '); 
+  };
 }
 
 const dmytro = new Person('Dmytro', '26.11.1994', 1000);
@@ -48,8 +49,8 @@ const pavel = new Person('Pavel', '06.06.1990', 400);
 dmytro.getInfo(); // print `Name: Dmytro, Age: <calculate yourself>, Amount: 1000$`
 dmytro.addMoney(2000, 'salary');
 dmytro.withdrawMoney(500, 'new phone');
-console.log(dmytro.getInfo()); // Name: Dmytro, Age: <calculate yourself>, Amount: 2500$
+dmytro.getInfo(); // Name: Dmytro, Age: <calculate yourself>, Amount: 2500$
 dmytro.withdrawMoney(500, 'apartment rent');
-console.log(dmytro.getAccountHistory()); // [ 'Initial: 1000', 'salary: 2000', 'new phone: -500', 'apartment rent: -500']
+dmytro.getAccountHistory(); // [ 'Initial: 1000', 'salary: 2000', 'new phone: -500', 'apartment rent: -500']
 
 pavel.getInfo(); // // Name: Pavel, Age: <calculate yourself>, Amount: 400$
