@@ -12,7 +12,7 @@ class Person {
   }
 
   getInfo() {
-    return (`name: ${this.name}, Age: ${this.getAge(this.dateOfBirthday)}, Amount: ${this.balance}$`);
+    return (`name: ${this.name}, Age: ${this.getAge()}, Amount: ${this.balance}$`);
   }
 
   pushInfo(accountHistory, amount, srcMassage) {
