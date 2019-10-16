@@ -28,15 +28,16 @@ class Person {
   }
 
   addToAccountHistory(amountOfMoney, purpose) {
-    this.amount += amountOfMoney;
     this.accountHistory.push({ "Purpose": purpose, "Amount of money": amountOfMoney });
   }
 
   addMoney(amountOfMoney, purpose) {
+    this.amount += amountOfMoney;
     this.addToAccountHistory(amountOfMoney, purpose);
   }
 
   withdrawMoney(amountOfMoney, purpose) {
+    this.amount -= amountOfMoney;
     this.addToAccountHistory(-amountOfMoney, purpose);
   }
 
