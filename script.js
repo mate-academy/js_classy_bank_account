@@ -9,7 +9,7 @@ class Person {
     constructor(name, birthday, amount) {
         this.name = name;
         this.amount = amount;
-        this.age = age(birthday)
+        this.age = age(birthday);
         this.accountHistory = [`Initial: ${this.amount}`];
     }
     getInfo() {
@@ -24,7 +24,7 @@ class Person {
         this.accountHistory.push(` ${purchase}: -${minusMoney}`)
     }
     getAccountHistory() {
-        console.log(`${this.accountHistory}`)
+        return `${this.accountHistory}`;
     }
 }
 
@@ -37,5 +37,4 @@ const pavel = new Person('Pavel', '06.06.1990', 400);
 // dmytro.getInfo(); // Name: Dmytro, Age: <calculate yourself>, Amount: 2500$
 // dmytro.withdrawMoney(500, 'apartment rent');
 // dmytro.getAccountHistory(); // [ 'Initial: 1000', 'salary: 2000', 'new phone: -500', 'apartment rent: -500']
-
 // pavel.getInfo(); // // Name: Pavel, Age: <calculate yourself>, Amount: 400$
