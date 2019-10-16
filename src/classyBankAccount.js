@@ -21,17 +21,17 @@ class Person {
   }
 
   addHistory(money, info) {
-    this.amount += money; 
-    let information = info; 
     this.accountHistory.push({ [info]: `${money}` }); 
   }
   
   addMoney(money, info) {
+    this.amount += money; 
     this.addHistory(money, info); 
   };
   
   withdrawMoney(money, info) {
-    this.addHistory(-money, info); 
+    this.amount -= money; 
+    this.addHistory(money, info); 
   };
 
   getAccountHistory = function() {
