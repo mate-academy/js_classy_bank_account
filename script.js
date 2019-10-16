@@ -46,9 +46,7 @@ class Person {
     };
 
     getAccountHistory = function() {
-        return this.history.map(item => {
-            `${item.description}: ${item.amount}`;
-        });
+        return this.history.map(item => `${item.description}: ${item.amount}`);
     };
 }
 
