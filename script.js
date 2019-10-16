@@ -46,11 +46,9 @@ class Person {
     };
 
     getAccountHistory = function() {
-        let result = [];
-        this.history.forEach(item => {
-            result.push(`${item.description}: ${item.amount}`);
+        return this.history.map(item => {
+            `${item.description}: ${item.amount}`;
         });
-        return result;
     };
 }
 
