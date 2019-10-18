@@ -13,7 +13,7 @@ class Person {
         this.accountHistory = [{name: 'Initial', money: this.amount}];
     }
     getInfo() {
-        console.log(`Name: ${this.name}, Age: ${this.age}, Amount: ${this.amount}\$`)
+        return `Name: ${this.name}, Age: ${this.age}, Amount: ${this.amount}\$`;
     }
     addMoney(salary, income) {
         this.amount += salary;
