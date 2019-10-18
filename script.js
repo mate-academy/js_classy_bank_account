@@ -10,18 +10,18 @@ class Person {
         this.name = name;
         this.amount = amount;
         this.age = age(birthday);
-        this.accountHistory = [`Initial: ${this.amount}`];
+        this.accountHistory = [{name: 'Initial', money: this.amount}];
     }
     getInfo() {
         console.log(`Name: ${this.name}, Age: ${this.age}, Amount: ${this.amount}\$`)
     }
     addMoney(salary, income) {
         this.amount += salary;
-        this.accountHistory.push(` ${income}: ${salary}`)
+        this.accountHistory.push({name: income, sum: salary})
     }
     withdrawMoney(minusMoney, purchase) {
         this.amount -= minusMoney;
-        this.accountHistory.push(` ${purchase}: -${minusMoney}`)
+        this.accountHistory.push({name: purchase, sum: minusMoney})
     }
     getAccountHistory() {
         return `${this.accountHistory}`;
