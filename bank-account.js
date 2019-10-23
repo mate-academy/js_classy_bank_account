@@ -31,7 +31,7 @@ class Person {
 
   withdrawMoney(cash, info) {
     this.money -= cash;
-    this.logHistory(`-${cash}`, info);
+    this.logHistory(-cash, info);
   }
 
   getAccountHistory() {
