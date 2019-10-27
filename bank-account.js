@@ -5,7 +5,7 @@ class Person {
     this.name = name;
     this.dateOfBirth = dateOfBirth;
     this.money = money;
-    this.history = [`Initial: ${money}`];
+    this.history = [{name: `Initial`, value: `${money}`}];
   };
 
   getClientAge() {
@@ -17,11 +17,11 @@ class Person {
   }
 
   logHistory(cash, info) {
-    this.history.push(`${info}: ${cash}`);
+    this.history.push({name: `${info}`, value: cash});
   }
 
   getInfo() {
-    console.log(`Name: ${this.name}, Age: ${this.getClientAge()}, Amount: ${this.money}$`)
+    return `Name: ${this.name}, Age: ${this.getClientAge()}, Amount: ${this.money}$`;
   }
 
   addMoney(cash, info) {
@@ -35,7 +35,7 @@ class Person {
   }
 
   getAccountHistory() {
-    console.log(this.history);
+    return this.history;
   }
 }
 
