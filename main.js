@@ -3,7 +3,7 @@ class Person {
     this.name = name;
     this.birthday = birthday;
     this.money = money;
-    this.history = [`Initial: ${money}`];
+    this.history = [{name: 'Initial', value: money}];
   }
 
   calculateAge (birthday) {
@@ -12,13 +12,13 @@ class Person {
 
   addMoney (amount, source) {
     this.money += amount;
-    this.history.push(`${source}: ${amount}`);
+    this.history.push({name: source, value: amount});
     return `${source}: ${amount}`;
   }
 
   withdrawMoney (amount, spending) {
     this.money = this.money - amount;
-    this.history.push(`${spending}: -${amount}`);
+    this.history.push({name: spending, value: amount});
     return `${spending}: -${amount}`;
   }
 
@@ -27,6 +27,8 @@ class Person {
   }
 
   getAccountHistory () {
-    return this.history;
+    return this.history.map(element => {
+      return `${element.name}: ${element.value}`;
+    });
   }
 }
