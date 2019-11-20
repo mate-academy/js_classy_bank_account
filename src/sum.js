@@ -3,7 +3,7 @@
 /**
  * Implement sum function:
  *
- * Function takes 2 numbers and returns it's sum
+ * Function takes 2 numbers and returns their sum
  *
  * sum(1, 2) === 3
  * sum(1, 11) === 12
