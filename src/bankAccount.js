@@ -12,14 +12,14 @@ class BankAccount {
     return (`Name: ${this.name}, Amount: ${this.amount}$`);
   };
 
-  addMoney(addedMoney, info) {
-    this.amount += addedMoney;
-    this.transactions.push(`${info}: ${addedMoney}`);
+  addMoney(amount, description) {
+    this.amount += amount;
+    this.transactions.push(`${description}: ${amount}`);
   };
 
-  withdrawMoney(wasSpending, info) {
-    this.transactions.push(`${info}: -${wasSpending}`);
-    this.amount -= wasSpending;
+  withdrawMoney(amount, description) {
+    this.transactions.push(`${description}: -${amount}`);
+    this.amount -= amount;
   };
 
   getAccountHistory() {
