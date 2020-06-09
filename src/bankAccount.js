@@ -10,8 +10,9 @@ class BankAccount {
   }
 
   _getAmount() {
-    return Object.values(this.history)
-      .reduce((sum, money) => sum + money);
+    const values = Object.values(this.history);
+
+    return values.reduce((sum, money) => sum + money);
   }
 
   getInfo() {
@@ -19,16 +20,17 @@ class BankAccount {
   }
 
   getAccountHistory() {
-    return Object.entries(this.history)
-      .map(entry => entry.join(': '));
+    const entries = Object.entries(this.history);
+
+    return entries.map(entry => entry.join(': '));
   }
 
-  addMoney(value, valueName) {
-    this.history[valueName] = value;
+  addMoney(value, operation) {
+    this.history[operation] = value;
   }
 
-  withdrawMoney(value, valueName) {
-    this.history[valueName] = -value;
+  withdrawMoney(value, operation) {
+    this.history[operation] = -value;
   }
 };
 
