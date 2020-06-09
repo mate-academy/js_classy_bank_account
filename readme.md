@@ -2,6 +2,8 @@
 
 Create a **class** for working with bank account data of a person.
 
+**Read [the guideline](https://github.com/mate-academy/js_task-guideline/blob/master/README.md) before start**
+
 **Requirements:**
 
 - The person has the following initial info: name, date of birth in string format, initial amount of money.
@@ -33,5 +35,3 @@ pavel.getInfo(); // // Name: Pavel, Age: <calculate yourself>, Amount: 400$
 ```
 
 Use `new Date()` to get the current date: you might need that in order to compare with the person’s date of birth and calculate their age.
-
-**Read [the guideline](https://github.com/mate-academy/js_task-guideline/blob/master/README.md) before start**
