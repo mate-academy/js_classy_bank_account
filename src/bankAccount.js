@@ -1,14 +1,20 @@
 'use strict';
 
 class BankAccount {
-  constructor(name, amount) {
+  constructor(name, birth, amount) {
     this.name = name;
+    this.birth = birth;
     this.amount = amount;
     this.accountHistory = [`Initial: ${this.amount}`];
   }
 
   getInfo() {
-    return `Name: ${this.name}, Amount: ${this.amount}$`;
+    const reversedBirth = this.birth.split('.').reverse().join('.');
+    const divider = 1000 * 60 * 60 * 24 * 365.25;
+    const age = new Date() - new Date(reversedBirth);
+    const dateFormatAge = Math.floor(age / divider);
+
+    return `Name: ${this.name}, Age: ${dateFormatAge}, Amount: ${this.amount}$`;
   }
 
   addMoney(amount, operation) {
