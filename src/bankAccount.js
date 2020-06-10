@@ -17,9 +17,8 @@ class BankAccount {
   }
 
   withdrawMoney(money, target) {
-    this.target = target;
     this.amount -= money;
-    this.history.push(`${this.target}: -${money}`);
+    this.history.push(`${target}: -${money}`);
   }
 
   getAccountHistory() {
