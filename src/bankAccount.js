@@ -9,14 +9,14 @@ class BankAccount {
     };
   }
 
-  _getAmount() {
+  getAmount() {
     const values = Object.values(this.history);
 
     return values.reduce((sum, money) => sum + money);
   }
 
   getInfo() {
-    return `Name: ${this.name}, Amount: ${this._getAmount()}$`;
+    return `Name: ${this.name}, Amount: ${this.getAmount()}$`;
   }
 
   getAccountHistory() {
