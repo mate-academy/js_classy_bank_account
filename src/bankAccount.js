@@ -1,10 +1,11 @@
 'use strict';
 
 class BankAccount {
-  constructor(name, amount) {
+  constructor(name, amount, date) {
     this.name = name;
     this.amount = amount;
     this.history = [`Initial: ${amount}`];
+    this.date = date;
   }
 
   getInfo() {
