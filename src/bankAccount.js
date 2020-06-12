@@ -20,7 +20,6 @@ class BankAccount {
 
     return (Math.floor((actualDate - userBirthday)
       / (365.25 * 24 * 3600 * 1000)));
-    //  years * days * seconds * milliseconds
   }
 
   getInfo() {
