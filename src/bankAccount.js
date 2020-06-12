@@ -1,14 +1,16 @@
 'use strict';
 
 class BankAccount {
-  constructor(name, initialAmount) {
+  constructor(name, dayOfBirth, initialAmount) {
     this.name = name;
     this.amount = initialAmount;
     this.history = [`Initial: ${initialAmount}`];
+    this.dayOfBirth = dayOfBirth;
+    this.age = 2020 - this.dayOfBirth.split('.')[2];
   }
 
   getInfo() {
-    return `Name: ${this.name}, Amount: ${this.amount}$`;
+    return `Name: ${this.name}, Age: ${this.age}, Amount: ${this.amount}$`;
   }
 
   addMoney(value, reference) {
