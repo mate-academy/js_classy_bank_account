@@ -1,7 +1,7 @@
 'use strict';
 
 class BankAccount {
-  constructor(name, dayOfBirth, initialAmount) {
+  constructor(name, initialAmount) {
     this.name = name;
     this.amount = initialAmount;
     this.history = [`Initial: ${initialAmount}`];
