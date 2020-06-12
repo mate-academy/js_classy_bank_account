@@ -6,11 +6,17 @@ class BankAccount {
     this.amount = initialAmount;
     this.history = [`Initial: ${initialAmount}`];
     this.dayOfBirth = dayOfBirth;
-    this.age = 2020 - this.dayOfBirth.split('.')[2];
+  }
+
+  getAge() {
+    const today = new Date();
+    const birthday = new Date(this.dayOfBirth.split('.').reverse().join('.'));
+
+    return (Math.floor((today - birthday) / (365.25 * 24 * 60 * 60 * 1000)));
   }
 
   getInfo() {
-    return `Name: ${this.name}, Age: ${this.age}, Amount: ${this.amount}$`;
+    return `Name: ${this.name}, Age: ${this.getAge()}, Amount: ${this.amount}$`;
   }
 
   addMoney(value, reference) {
