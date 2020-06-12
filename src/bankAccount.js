@@ -5,7 +5,7 @@ class BankAccount {
     this.name = name;
     this.money = amount;
     this.birthDate = new Date(birthDate.split('.').reverse().join('-'));
-    this.age = Math.round((new Date() - this.birthDate) / 31536000000);
+    this.age = new Date().getFullYear() - this.birthDate.getFullYear();
     this.history = [`Initial: ${amount}`];
   }
 
