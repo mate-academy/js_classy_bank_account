@@ -9,11 +9,10 @@ class BankAccount {
   }
 
   findAge(birthday) {
-    let birthdayFormat = birthday.split('.');
-
-    [birthdayFormat[0], birthdayFormat[1]]
-    = [birthdayFormat[1], birthdayFormat[0]];
-    birthdayFormat = birthdayFormat.join('.');
+    const birthdayFormat = birthday
+      .split('.')
+      .reverse()
+      .join('-');
 
     const actualDate = new Date().getTime();
     const userBirthday = new Date(birthdayFormat).getTime();
