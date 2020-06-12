@@ -10,7 +10,7 @@ class BankAccount {
 
   getAge() {
     const today = new Date();
-    const birthday = new Date(this.dayOfBirth.split('.').reverse().join('.'));
+    const birthday = new Date(this.dayOfBirth.split('.').reverse());
 
     return (Math.floor((today - birthday) / (365.25 * 24 * 60 * 60 * 1000)));
   }
