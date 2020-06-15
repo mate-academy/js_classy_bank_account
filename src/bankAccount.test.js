@@ -38,7 +38,7 @@ describe('BankAccount', () => {
     account.addMoney(400, 'lottery');
 
     expect(account.getInfo())
-      .toBe(`Name: Oleg, Amount: 2700$`);
+      .toBe(`Name: Oleg, Age: 21, Amount: 2700$`);
   });
 
   it('Should withdraw money', () => {
@@ -48,7 +48,7 @@ describe('BankAccount', () => {
     account.withdrawMoney(700, 'products');
 
     expect(account.getInfo())
-      .toBe(`Name: Oleg, Amount: 700$`);
+      .toBe(`Name: Oleg, Age: 21, Amount: 700$`);
   });
 
   it('Should update accountHistory', () => {
