@@ -2,10 +2,10 @@
 
 class BankAccount {
   constructor(name, birthDate, amount) {
-    const date1 = new Date().getFullYear();
-    const date2 = new Date(birthDate.split('.').reverse()
+    const todayDate = new Date().getFullYear();
+    const dateOfBirth = new Date(birthDate.split('.').reverse()
       .join('.')).getFullYear();
-    const age = date1 - date2;
+    const age = todayDate - dateOfBirth;
 
     this.name = name;
     this.amount = amount;
