@@ -2,14 +2,14 @@
 
 class BankAccount {
   constructor(name, birthDate, amount) {
-    const date1 = new Date('2020.12.06');
-    const date2 = new Date(birthDate.split('.').reverse().join('.'));
-    const diff = date1 - date2;
-    const years = Math.floor(diff / 31536000000);
+    const date1 = new Date().getFullYear();
+    const date2 = new Date(birthDate.split('.').reverse()
+      .join('.')).getFullYear();
+    const age = date1 - date2;
 
     this.name = name;
     this.amount = amount;
-    this.age = years;
+    this.age = age;
     this.history = ['Initial: ' + amount];
   }
 
